@@ -5,18 +5,20 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    'gatsby-plugin-styled-components',
+    "gatsby-plugin-styled-components",
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: "@prismicio/gatsby-source-prismic-graphql",
       options: {
-        repositoryName: 'bep-landing',
-        pages: [{
-          type: 'Page',
-          match: '/:uid',
-          path: '/',
-          component: require.resolve('./src/templates/page.js')
-        }]
-      }
+        repositoryName: "bep-landing",
+        pages: [
+          {
+            type: "Page",
+            match: "/:uid",
+            path: "/",
+            component: require.resolve("./src/templates/page.js"),
+          },
+        ],
+      },
     },
     `gatsby-plugin-react-helmet`,
     {

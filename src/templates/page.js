@@ -1,17 +1,17 @@
-import React from 'react';
-import {graphql} from 'gatsby';
-import RichText from '../components/richText';
-import Layout from '../components/layout';
-import SliceZone from '../components/sliceZone';
-import styled from 'styled-components';
+import React from "react"
+import { graphql } from "gatsby"
+import RichText from "../components/richText"
+import Layout from "../components/layout"
+import SliceZone from "../components/sliceZone"
+import styled from "styled-components"
 
 export const query = graphql`
-query PageQuery($id: String){
+  query PageQuery($id: String) {
     prismic {
       allPages(id: $id) {
         edges {
           node {
-            body{
+            body {
               ... on PRISMIC_PageBodyCall_to_action_grid2 {
                 type
                 label
@@ -30,11 +30,18 @@ query PageQuery($id: String){
                   call_to_action_title
                   content
                   featured_image
+                  featured_imageSharp {
+                    childImageSharp {
+                      fixed {
+                        ...GatsbyImageSharpFixed
+                      }
+                    }
+                  }
                 }
               }
             }
             content
-              page_title
+            page_title
             _meta {
               id
               uid
@@ -43,7 +50,7 @@ query PageQuery($id: String){
         }
       }
     }
-}
+  }
 `
 
 const PageWrapper = styled.section`
@@ -51,23 +58,21 @@ const PageWrapper = styled.section`
   margin: 0 auto;
 `
 
-const Page = (props) => {
-  console.log(props);
-    const pageTitle = props.data.prismic.allPages.edges[0].node.page_title;
-    const content = props.data.prismic.allPages.edges[0].node.content;
+const Page = props => {
+  const pageTitle = props.data.prismic.allPages.edges[0].node.page_title
+  const content = props.data.prismic.allPages.edges[0].node.content
 
-    return (
-        <Layout>
-          <PageWrapper>
-          <RichText render={pageTitle} />
+  return (
+    <Layout>
+      <PageWrapper>
+        <RichText render={pageTitle} />
         <RichText render={content} />
-        {!!props.data.prismic.allPages.edges[0].node.body &&
+        {!!props.data.prismic.allPages.edges[0].node.body && (
           <SliceZone body={props.data.prismic.allPages.edges[0].node.body} />
-        }
-          </PageWrapper>
-        
-        </Layout>
-    );
+        )}
+      </PageWrapper>
+    </Layout>
+  )
 }
 
-export default Page;
+export default Page

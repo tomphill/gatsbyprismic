@@ -5,8 +5,9 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@prismicio/gatsby-source-prismic-graphql": "^3.6.7",
     "babel-plugin-styled-components": "^1.10.6",
-    "gatsby": "^2.18.12",
+    "gatsby": "^2.13.37",
     "gatsby-background-image": "^0.9.13",
     "gatsby-image": "^2.2.34",
     "gatsby-plugin-manifest": "^2.2.31",
@@ -15,7 +16,6 @@
     "gatsby-plugin-sharp": "^2.4.4",
     "gatsby-plugin-styled-components": "^3.1.17",
     "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-source-prismic-graphql": "3.4.0-beta.2",
     "gatsby-transformer-sharp": "^2.3.13",
     "prismic-reactjs": "^1.1.2",
     "prop-types": "^15.7.2",

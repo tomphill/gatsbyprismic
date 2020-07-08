@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+var fs = require("fs")
+var dir = "./.cache/caches/@prismicio/gatsby-source-prismic-graphql"
 
-// You can delete this file if you're not using it
+exports.onPreBootstrap = () => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true })
+  }
+}
